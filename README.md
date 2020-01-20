@@ -1,7 +1,7 @@
 # palibot
-MHGU discord bot
+MHW discord bot
 ------
-Currently runnning on 792 discord servers (last update 19/06/2019)
+Code template taken from [Crousthybalt](https://github.com/Crousthybalt/palibot)
 ------
 just invite the bot to your server through the following link :
 
