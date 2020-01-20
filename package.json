@@ -12,10 +12,10 @@
     "dev": "nodemon main.js"
   },
   "dependencies": {
-    "discord.js": "11.4.2",
-    "request": "2.81.0",
+    "discord.js": "^11.4.2",
+    "fast-levenshtein": "2.0.6",
     "node-fetch": "2.6.0",
-    "fast-levenshtein": "2.0.6"
+    "request": "2.81.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
