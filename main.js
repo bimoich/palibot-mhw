@@ -1,5 +1,6 @@
 const fs = require('fs');
 const Discord = require('discord.js');
+//const {prefix} = require('./config.json');
 const client = new Discord.Client();
 global.client = client;
 client.commands = new Discord.Collection();
@@ -71,7 +72,7 @@ client.on('message', message => {
 	}
 	catch (error) {
 		console.error(error);
-		message.reply('Something went wrong meowster');
+		message.reply('Something went wrong mewonster');
 	}
 });
 
