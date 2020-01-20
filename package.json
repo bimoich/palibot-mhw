@@ -3,6 +3,10 @@
   "description": "I help you to hunt big monsters !",
   "version": "1.0.0",
   "main": "main.js",
+  "engines": {
+    "node": "12.14.1",
+    "npm": "6.13.4"
+  },
   "scripts": {
     "start": "node main.js",
     "dev": "nodemon main.js"
