@@ -186,7 +186,7 @@ module.exports = {
         .setURL(wiki)
         //.setDescription(wiki)
         .addField("Weakness(es) : ", weaknesses, true)
-        .addField("Ailment(s) : ", ail, true)
+        .addField("Blight(s) : ", ail, true)
         .addBlankField(true)
         .addField("Locations: ", locs, true)
       // if (final_trivia.length > 0 && final_trivia.length<1024){
