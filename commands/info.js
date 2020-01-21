@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 const Discord = require('discord.js');
 var levenshtein = require('fast-levenshtein');
-const { elements, ailments, monster_list, locations } = require('../ressources/config.json');
+const { elements, ailments, monster_list, locations, blights } = require('../ressources/config.json');
 const { src_thumbnail } = require('../ressources/src_thb.json')
 module.exports = {
   name: 'info',
@@ -26,7 +26,6 @@ module.exports = {
     if (msg === ``) {
       return;
     }
-    console.log(msg)
     var monstre = "" //will contain the correct name for the url
     var prettyname = "" //will contain a pretty name for the monster, with capitalized letters
     const monster_name = msg.split(" ");
@@ -39,48 +38,65 @@ module.exports = {
     monstre = monstre.slice(0, monstre.length - 1).replace(/\'/g, '%27')
     prettyname = prettyname.slice(0, prettyname.length - 1)
     var wiki = "https://monsterhunterworld.wiki.fextralife.com/" + monstre //The url we are fetching
-    console.log(wiki)
-
 
     function wik(doc) {
       //We first create 'weaknesses', the string containing the monster's weaknesses.
 
 
-      const begin_weak = doc.indexOf('<td>Weakness</td>');
-      const end_weak = doc.indexOf('<td>Resistances</td>');
+      const docStartIndex = doc.indexOf('Weakness</td>');
+      const docEndIndex = doc.indexOf('Resistances</td>');
+      let weaknesses = ``;
 
-      var weaknesses = ``;
-
-      const doc2 = doc.substring(begin_weak, end_weak);
+      const rawData = doc.substring(docStartIndex, docEndIndex);
       for (var i = 0; i < elements.length; i++) {
 
-        if (doc2.includes(elements[i])) {
+        if (rawData.includes(elements[i])) {
           current_elt = elements[i].replace(/ /g, '_');
-          elt = client.emojis.find(emoji => emoji.name === current_elt.toLowerCase() + "_weakness");
-          weaknesses = weaknesses.concat(`${elt}` + ` ` + elements[i] + `\n`)
+          elementStartIndex = rawData.indexOf(current_elt + "</a>")
+          elementData = rawData.substring(elementStartIndex, elementStartIndex + 20)
+          starCounter = elementData.match(new RegExp("⭐", "g"))
+
+          weaknesses = weaknesses.concat(current_elt + "  "
+            + `(${"\:star:".repeat(starCounter.length)})` + `\n`)
         }
       }
       if (weaknesses === ``) {
         weaknesses = `None`
       }
 
+      //Now we create 'blight', the string containing the blights.
 
-      //Now we create 'ail', the string containing the ailments.
-
-      var ail = "";
-      const begin_ailment = doc.indexOf('<td>Ailments</td>');
-      const end_ailment = doc.indexOf('<td>Weakness</td>')
-      const docail = doc.substring(begin_ailment, end_ailment)
-      for (var i = 0; i < ailments.length; i++) {
-        if (docail.includes(ailments[i])) {
-          current_ail = ailments[i].replace(/ /g, '_');
-          emoj_ail = client.emojis.find(emoji => emoji.name === current_ail.toLowerCase + "_ailment");
-          ail = ail.concat(emoj_ail + ` ` + ailments[i] + `\n`);
+      var blight = "";
+      const blightStartIndex = doc.indexOf('<td>Ailments</td>');
+      const blightEndIndex = doc.indexOf('<td>Weakness</td>')
+      const blightDoc = doc.substring(blightStartIndex, blightEndIndex)
+      for (var i = 0; i < blights.length; i++) {
+        if (blightDoc.includes(blights[i])) {
+          current_blight = blights[i].replace(/ /g, '_');
+          emoji_blight = client.emojis.find(emoji => emoji.name === current_blight.toLowerCase + "_ailment");
+          blight = blight.concat(blights[i] + `\n`);
         }
       }
-      if (ail === ``) {
-        ail = `None`
+      if (blight === ``) {
+        blight = `None`
       }
+
+      // //Now we create 'ail', the string containing the ailments.
+
+      // var ail = "";
+      // const begin_ailment = doc.indexOf('<td>Ailments</td>');
+      // const end_ailment = doc.indexOf('<td>Weakness</td>')
+      // const docail = doc.substring(begin_ailment, end_ailment)
+      // for (var i = 0; i < ailments.length; i++) {
+      //   if (docail.includes(ailments[i])) {
+      //     current_ail = ailments[i].replace(/ /g, '_');
+      //     emoj_ail = client.emojis.find(emoji => emoji.name === current_ail.toLowerCase + "_ailment");
+      //     ail = ail.concat(ailments[i] + `\n`);
+      //   }
+      // }
+      // if (ail === ``) {
+      //   ail = `None`
+      // }
 
       //Now we create 'locs', the string containing the locations.
 
@@ -184,11 +200,11 @@ module.exports = {
         .setColor("RANDOM")
         .setTitle("Monster : ".concat(prettyname.replace(/%27/g, "\'")))
         .setURL(wiki)
-        //.setDescription(wiki)
-        .addField("Weakness(es) : ", weaknesses, true)
-        .addField("Ailment(s) : ", ail, true)
+        .setTimestamp()
+        .addField("Weakness(es)", weaknesses, true)
+        .addField("Blight(s)", blight, true)
         .addBlankField(true)
-        .addField("Locations: ", locs, true)
+        .addField("Location(s): ", locs, false)
       // if (final_trivia.length > 0 && final_trivia.length<1024){
       //   embed.addField("Note :",final_trivia)
       // }

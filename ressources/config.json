@@ -79,6 +79,17 @@
     "Paralysis",
     "Sleep",
     "Stun",
+    "Blast"
+  ],
+  "locations": [
+    "Ancient+Forest",
+    "Coral+Highlands",
+    "Elder's+Recess",
+    "Everstream",
+    "Rotten+Vale",
+    "Wildspire+Waste"
+  ],
+  "blights":[
     "Blastblight",
     "Bleeding",
     "Effluvium",
@@ -88,13 +99,5 @@
     "Thunderblight",
     "Iceblight",
     "Dragonblight"
-  ],
-  "locations": [
-    "Ancient+Forest",
-    "Coral+Highlands",
-    "Elder's+Recess",
-    "Everstream",
-    "Rotten+Vale",
-    "Wildspire+Waste"
   ]
 }
