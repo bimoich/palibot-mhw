@@ -76,10 +76,10 @@
   ],
   "ailments": [
     "Poison",
-    "Paralysis",
     "Sleep",
-    "Stun",
-    "Blast"
+    "Paralysis",
+    "Blast",
+    "Stun"
   ],
   "locations": [
     "Ancient+Forest",
