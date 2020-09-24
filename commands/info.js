@@ -1,5 +1,7 @@
-const fetch = require('node-fetch');
-const Discord = require('discord.js');
+import fetch from 'node-fetch'
+import Discord from 'discord.js'
+// const fetch = require('node-fetch');
+// const Discord = require('discord.js');
 var levenshtein = require('fast-levenshtein');
 const { elements, ailments, monster_list, locations, blights } = require('../ressources/config.json');
 const { src_thumbnail } = require('../ressources/src_thb.json')

@@ -19,7 +19,10 @@
     "Diablos",
     "Dodogama",
     "Ebony+Odogaron",
+    "Fatalis",
+    "Frostfang+Barioth",
     "Fulgur+Anjanath",
+    "Furious+Rajang",
     "Glavenus",
     "Gold+Rathian",
     "Great+Girros",
@@ -43,6 +46,7 @@
     "Pukei-Pukei",
     "Radobaan",
     "Rajang",
+    "Raging+Brachydios",
     "Rathalos",
     "Rathian",
     "Ruiner+Nergigante",
@@ -88,7 +92,13 @@
     "Everstream",
     "Rotten+Vale",
     "Wildspire+Waste",
-    "Hoarfrost+Reach"
+    "Hoarfrost+Reach",
+    "Guiding+Lands",
+    "Great+Ravine",
+    "Origin+Isle",
+    "Castle+Schrade",
+    "Seliana+Supply+Cache",
+    "Caverns+of+El+Dorado"
   ],
   "blights":[
     "Blastblight",
