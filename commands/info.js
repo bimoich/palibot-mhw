@@ -247,7 +247,7 @@ module.exports = {
     } //Nice logs
     if (!a_trouve) {
 
-      console.log("failure. Suggestion -> " + suggestedyname);
+      console.log("failure. Suggestion -> " + suggestedname);
 
     }
 
