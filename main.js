@@ -15,11 +15,18 @@ const cooldowns = new Discord.Collection();
 
 client.once('ready', () => {
 	console.log(`Ready to serve on ${client.guilds.size} servers, for ${client.users.size} users.`);
-	client.user.setActivity('pali help')
+	client.user.setStatus('available')
+	client.user.setPresence({
+		game: {
+			name: 'with depression',
+			type: "STREAMING",
+			url: "https://www.twitch.tv/monstercat"
+		}
+	});
 });
 
 client.on('message', message => {
-	if (message.author.bot) {return;}
+	if (message.author.bot) { return; }
 	const args = message.content.slice().split(/ +/);
 	const commandName = args.shift().toLowerCase();
 
