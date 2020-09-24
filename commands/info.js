@@ -230,13 +230,13 @@ module.exports = {
         }
         console.log(closest_monster)
       }
-      var suggestedyname = closest_monster.replace(/_/g, " ").replace(/%27/g, "'");
-      suggestedyname = (closest_monster.charAt(0).toUpperCase() + suggestedyname.slice(1)).toLowerCase();
-      if (msg == "<@510472551332315157>") {
+      var suggestedname = closest_monster.replace(/_/g, " ").replace(/%27/g, "'").replace("+", " ");
+      suggestedname = (closest_monster.charAt(0).toUpperCase() + suggestedname.slice(1)).toLowerCase();
+      if (msg == "<@668495141077778433>") {
         message.channel.send("Im not a monster! I'm the palibot!");
       }
       else {
-        message.channel.send("Sorry Master, I can't find the meownster ! Did you mean **" + suggestedyname + "** ? " + "\nIf not, please try `pali help`  :crying_cat_face:")
+        message.channel.send("Sorry Master, I can't find the meownster ! Did you mean **" + suggestedname + "** ? " + "\nIf not, please try `pali help`  :crying_cat_face:")
       }
     }
     try {
