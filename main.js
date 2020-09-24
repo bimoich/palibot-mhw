@@ -18,9 +18,7 @@ client.once('ready', () => {
 	client.user.setStatus('available')
 	client.user.setPresence({
 		game: {
-			name: 'with depression',
-			type: "STREAMING",
-			url: "https://www.twitch.tv/monstercat"
+			name: 'Pali help - info <monster name>',
 		}
 	});
 });
